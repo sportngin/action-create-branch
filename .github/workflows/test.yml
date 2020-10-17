@@ -13,7 +13,7 @@ jobs:
 
     steps:
     - name: Create Test Branch
-      uses: emmasax4/action-create-branch@master
+      uses: sportngin/action-create-branch@master
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       with:
