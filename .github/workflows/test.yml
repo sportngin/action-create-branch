@@ -1,4 +1,4 @@
-# For this workflow to work, you must have a SLACK_WEBHOOK secret defined in either the organization or the repository
+# This workflow merely tests that the branch can successfully be created
 name: Test Branch Creation
 
 on:
