@@ -1,0 +1,26 @@
+# For this workflow to work, you must have a SLACK_WEBHOOK secret defined in either the organization or the repository
+name: Test Branch Creation
+
+on:
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Create Test Branch
+      uses: emmasax4/action-create-branch@master
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      with:
+        branch: test-branch
+
+    - name: Delete Test Branch
+      uses: dawidd6/action-delete-branch@v2.0.1
+      with:
+        github_token: ${{ secrets.GITHUB_TOKEN }}
+        branches: test-branch
