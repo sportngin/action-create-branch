@@ -1,0 +1,32 @@
+# This workflow tests that the project can build and tests can run
+name: Build and Run Tests
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  build-test:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Check Out Code
+      uses: actions/checkout@v2
+      with:
+        fetch-depth: 0
+
+    - name: Define Run Variables
+      run: echo "BRANCH=$(echo ${{ github.head_ref }} | sed -E 's|refs/[a-zA-Z]+/||')" >> $GITHUB_ENV
+
+    - name: Switch to Current Branch
+      run: git checkout ${{ env.BRANCH }}
+
+    - name: NPM CI
+      run: npm ci
+
+    - name: NPM Build
+      run: npm run build
+
+    - name: NPM Test
+      run: npm run test

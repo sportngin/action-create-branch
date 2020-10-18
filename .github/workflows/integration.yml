@@ -1,19 +1,21 @@
-# This workflow merely tests that the branch can successfully be created
-name: Test Branch Creation
+# This workflow tests that the branch can successfully be created
+name: Integration Test
 
 on:
   push:
-    branches: [ master ]
-  pull_request:
-    branches: [ master ]
+    branches: [ main ]
 
 jobs:
-  build:
+  integration-test:
     runs-on: ubuntu-latest
-
     steps:
+    - name: Check Out Code
+      uses: actions/checkout@v2
+      with:
+        fetch-depth: 0
+
     - name: Create Test Branch
-      uses: sportngin/action-create-branch@master
+      uses: emmasax4/action-create-branch@main
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       with:
