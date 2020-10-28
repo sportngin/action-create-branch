@@ -1,12 +1,12 @@
 # This workflow tests that the branch can successfully be created
-name: Integration Test
+name: Integration
 
 on:
   push:
     branches: [ main ]
 
 jobs:
-  integration-test:
+  main:
     runs-on: ubuntu-latest
     steps:
     - name: Check Out Code
