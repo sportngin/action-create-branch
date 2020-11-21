@@ -15,7 +15,7 @@ jobs:
         fetch-depth: 0
 
     - name: Create Test Branch
-      uses: emmasax4/action-create-branch@main
+      uses: sportngin/action-create-branch@main
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       with:
